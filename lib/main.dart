@@ -14,31 +14,32 @@ import 'package:goodhere_user_v2/utils/messages.dart';
 
 import 'controller/localization_controller.dart';
 import 'helper/get_di.dart' as di;
+import 'helper/responsive_helper.dart';
 import 'helper/route_helper.dart';
 
 Future<void> main() async {
   if (kDebugMode) {
     print("Bắt đầu: ${DateTime.now()}");
   }
-  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  // // if (ResponsiveHelper.isMobilePhone()) {
-  // //   HttpOverrides.global = MyHttpOverrides();
-  // // }
-  // //
-  // // setPathUrlStrategy();
-  // // await Firebase.initializeApp(
-  // //   options: DefaultFirebaseOptions.currentPlatform,
-  // // );
-  // //
-  // // try {
-  // //   if (GetPlatform.isMobile) {
-  // //     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  // //         FlutterLocalNotificationsPlugin();
-  // //     await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
-  // //     FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
-  // //   }
-  // // } catch (e) {}
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // if (ResponsiveHelper.isMobilePhone()) {
+  //   HttpOverrides.global = MyHttpOverrides();
+  // }
+  //
+  // setPathUrlStrategy();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  //
+  // try {
+  //   if (GetPlatform.isMobile) {
+  //     final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  //         FlutterLocalNotificationsPlugin();
+  //     await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+  //     FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+  //   }
+  // } catch (e) {}
 
   Map<String, Map<String, String>> _languages = await di.init();
 

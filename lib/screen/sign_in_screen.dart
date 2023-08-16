@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/screen/dashboard/dashboard_screen.dart';
 import '../controller/auth_controller.dart';
 import '../utils/images.dart';
 import 'home/home_screen.dart';
@@ -190,7 +191,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       Get.find<AuthController>().login(username, password).then((value) => {
             if (value == 200)
-              {Get.to(() => const HomeScreent(),transition: Transition.size,duration: const Duration(milliseconds: 500),curve: Curves.easeIn)}
+              {Get.to(() => DashboardScreen(pageIndex: 0),transition: Transition.size,duration: const Duration(milliseconds: 500),curve: Curves.easeIn)}
             else if (value == 400)
               {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

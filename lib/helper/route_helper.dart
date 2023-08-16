@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/screen/dashboard/dashboard_screen.dart';
 
 import '../screen/home/home_screen.dart';
 import '../screen/sign_in_screen.dart';
@@ -48,7 +49,7 @@ class RouteHelper {
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: signIn, page: () => const SignInScreen()),
-    GetPage(name: main, page: () => const HomeScreent()),
+    GetPage(name: main, page: () => DashboardScreen(pageIndex: 0)),
   ];
 
   static getRoute(Widget navigateTo) {
