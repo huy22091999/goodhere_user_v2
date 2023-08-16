@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/screen/auth/sign_up_screen.dart';
 
 import '../screen/home/home_screen.dart';
-import '../screen/sign_in_screen.dart';
-import '../screen/splash_screen.dart';
+import '../screen/auth/sign_in_screen.dart';
+import '../screen/auth/splash_screen.dart';
 
 class RouteHelper {
   static const String initial = '/';
@@ -30,6 +31,7 @@ class RouteHelper {
   static const String navbar = '/navbar';
   static const String assetInfo = '/asset-info';
   static const String listInventory = '/list-inventory';
+  static const String html = '/html';
 
   static String getInitialRoute() => '$initial';
 
@@ -45,9 +47,12 @@ class RouteHelper {
 
   static String getListInventory(String id) => '$listInventory?id=$id';
 
+  static String getHtmlRoute(String page) => '$html?page=$page';
+
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: signIn, page: () => const SignInScreen()),
+    GetPage(name: signUp, page: () => const SignUpScreen()),
     GetPage(name: main, page: () => const HomeScreent()),
   ];
 

@@ -20,8 +20,8 @@ Future<void> main() async {
   if (kDebugMode) {
     print("Bắt đầu: ${DateTime.now()}");
   }
-  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   // // if (ResponsiveHelper.isMobilePhone()) {
   // //   HttpOverrides.global = MyHttpOverrides();
   // // }

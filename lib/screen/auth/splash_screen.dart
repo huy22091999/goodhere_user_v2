@@ -4,12 +4,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controller/auth_controller.dart';
-import '../controller/splash_controller.dart';
-import '../helper/route_helper.dart';
-import '../utils/dimensions.dart';
-import '../utils/images.dart';
-import '../view/no_internet_screen.dart';
+import '../../controller/auth_controller.dart';
+import '../../controller/splash_controller.dart';
+import '../../helper/route_helper.dart';
+import '../../utils/dimensions.dart';
+import '../../utils/images.dart';
+import '../../view/no_internet_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
