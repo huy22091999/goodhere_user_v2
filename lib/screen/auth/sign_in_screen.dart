@@ -1,14 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/screen/dashboard/dashboard_screen.dart';
 import '../../controller/auth_controller.dart';
 import '../../helper/route_helper.dart';
 import '../../utils/dimensions.dart';
 import '../../utils/images.dart';
 import '../../utils/styles.dart';
+import '../../view/base/custom_text_field.dart';
 import '../../view/custom_button.dart';
-import '../base/custom_text_field.dart';
-import '../home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -227,7 +227,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       Get.find<AuthController>().login(username, password).then((value) => {
             if (value == 200)
-              {Get.off(() => const HomeScreent(),transition: Transition.size,duration: const Duration(milliseconds: 500),curve: Curves.easeIn)}
+              {Get.off(() => DashboardScreen(pageIndex: 0),transition: Transition.size,duration: const Duration(milliseconds: 500),curve: Curves.easeIn)}
             else if (value == 400)
               {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
