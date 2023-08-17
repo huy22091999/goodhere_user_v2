@@ -8,6 +8,7 @@ import '../../../utils/images.dart';
 import '../../../utils/styles.dart';
 import '../../../view/base/paginated_list_view.dart';
 import '../widget/module_view.dart';
+import '../widget/popular_item_view.dart';
 
 class Theme1HomeScreen extends StatelessWidget {
   final ScrollController scrollController;
@@ -32,89 +33,89 @@ class Theme1HomeScreen extends StatelessWidget {
               : Theme.of(context).backgroundColor,
           title: Center(
               child: Container(
-            width: Dimensions.WEB_MAX_WIDTH,
-            height: 50,
-            color: Theme.of(context).backgroundColor,
-            child: Row(children: [
-              !showMobileModule ?
-               InkWell(
-                onTap: () => {Get.find<SplashController>().setModule(-1)},
-                child: Image.asset(Images.module_icon, height: 22, width: 22),
-              ) :SizedBox(),
-              SizedBox(width: showMobileModule ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0 ),
-              Expanded(
-                  child: InkWell(
-                    onTap: () =>
-                        Get.toNamed(
-                            "RouteHelper.getAccessLocationRoute('home')"),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: Dimensions.PADDING_SIZE_SMALL,
-                        horizontal: ResponsiveHelper.isDesktop(context)
-                            ? Dimensions.PADDING_SIZE_SMALL
-                            : 0,
-                      ),
-                      child: GetBuilder<SplashController>(
-                          builder: (locationController) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                          Icons.home_filled
-                          ,
-                          size: 20,
-                          color: Theme.of(context).textTheme.bodyText1!.color,
-                        ),
-                        SizedBox(width: 10),
-                        // hiển thị vị trí
-                        Flexible(
-                          child: Text(
-                            "467 Nguyễn trãi Hà Nội",
-                            style: robotoRegular.copyWith(
-                              color:
-                                  Theme.of(context).textTheme.bodyText1!.color,
-                              fontSize: Dimensions.fontSizeSmall,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                width: Dimensions.WEB_MAX_WIDTH,
+                height: 50,
+                color: Theme.of(context).backgroundColor,
+                child: Row(children: [
+                  !showMobileModule ?
+                  InkWell(
+                    onTap: () => {Get.find<SplashController>().setModule(-1)},
+                    child: Image.asset(Images.module_icon, height: 22, width: 22),
+                  ) :SizedBox(),
+                  SizedBox(width: showMobileModule ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0 ),
+                  Expanded(
+                      child: InkWell(
+                        onTap: () =>
+                            Get.toNamed(
+                                "RouteHelper.getAccessLocationRoute('home')"),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: Dimensions.PADDING_SIZE_SMALL,
+                            horizontal: ResponsiveHelper.isDesktop(context)
+                                ? Dimensions.PADDING_SIZE_SMALL
+                                : 0,
                           ),
+                          child: GetBuilder<SplashController>(
+                              builder: (locationController) {
+                                return Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.home_filled
+                                      ,
+                                      size: 20,
+                                      color: Theme.of(context).textTheme.bodyText1!.color,
+                                    ),
+                                    SizedBox(width: 10),
+                                    // hiển thị vị trí
+                                    Flexible(
+                                      child: Text(
+                                        "467 Nguyễn trãi Hà Nội",
+                                        style: robotoRegular.copyWith(
+                                          color:
+                                          Theme.of(context).textTheme.bodyText1!.color,
+                                          fontSize: Dimensions.fontSizeSmall,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    Icon(Icons.arrow_drop_down,
+                                        color:
+                                        Theme.of(context).textTheme.bodyText1!.color),
+                                  ],
+                                );
+                              }),
                         ),
-                        Icon(Icons.arrow_drop_down,
-                            color:
-                                Theme.of(context).textTheme.bodyText1!.color),
-                      ],
-                    );
-                  }),
-                ),
-              )),
-              InkWell(
-                child: GetBuilder<SplashController>(
-                    builder: (notificationController) {
-                  return Stack(children: [
-                    Icon(Icons.notifications,
-                        size: 25,
-                        color: Theme.of(context).textTheme.bodyText1!.color),
-                    Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          height: 10,
-                          width: 10,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width: 1, color: Theme.of(context).cardColor),
-                          ),
-                        ))
-                    // : SizedBox()
-                    ,
-                  ]);
-                    }),
-                onTap: () => Get.toNamed("RouteHelper.getNotificationRoute()"),
-              ),
-            ]),
+                      )),
+                  InkWell(
+                    child: GetBuilder<SplashController>(
+                        builder: (notificationController) {
+                          return Stack(children: [
+                            Icon(Icons.notifications,
+                                size: 25,
+                                color: Theme.of(context).textTheme.bodyText1!.color),
+                            Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 1, color: Theme.of(context).cardColor),
+                                  ),
+                                ))
+                            // : SizedBox()
+                            ,
+                          ]);
+                        }),
+                    onTap: () => Get.toNamed("RouteHelper.getNotificationRoute()"),
+                  ),
+                ]),
               )),
           actions: const [SizedBox()],
         ),
@@ -213,7 +214,7 @@ class Theme1HomeScreen extends StatelessWidget {
                                   // onPaginate: (int offset) async =>
                                   //     await storeController.getStoreList(
                                   //         offset, false),
-                                  itemView: Text("data")
+                                  itemView: PopularItemView()
 
                                 // ItemsView(
                                 //   isStore: true,

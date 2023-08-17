@@ -5,7 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:goodhere_user_v2/controller/order_controller.dart';
+import 'package:goodhere_user_v2/controller/product_controller.dart';
 import 'package:goodhere_user_v2/data/repository/order_repo.dart';
+import 'package:goodhere_user_v2/data/repository/product_repo.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,8 +36,12 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => LanguageRepo());
   Get.lazyPut(
       () => AuthRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+
   Get.lazyPut(
           () => OrderRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+
+  Get.lazyPut(
+          () => ProductRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => SplashRepo(apiClient: Get.find()));
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
@@ -43,6 +49,8 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => SplashController(repo: Get.find()));
   Get.lazyPut(() => AuthController(repo: Get.find()));
   Get.lazyPut(() => OrderController(orderRepo: Get.find()));
+
+  Get.lazyPut(() => ProductController(productRepo: Get.find()));
 
   if (await Permission.location.isGranted) {
     final newLocalData = await Geolocator.getCurrentPosition(
