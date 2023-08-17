@@ -26,6 +26,11 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     super.initState();
+    // auth.setSettings(
+    //     appVerificationDisabledForTesting: true,
+    //     phoneNumber: "0949392616",
+    //     smsCode: "123456",
+    //     forceRecaptchaFlow: true);
   }
 
   @override

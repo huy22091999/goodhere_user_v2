@@ -15,6 +15,8 @@ class AppConstants {
   static const String SUB_CATEGORY_URI = '/api/v1/categories/childes/';
   static const String CATEGORY_ITEM_URI = '/api/v1/categories/items/';
   static const String CATEGORY_STORE_URI = '/api/v1/categories/stores/';
+  static const String GET_CART = '/order/get-all';
+  static const String GET_PRODUCTS = '/product/search';
   static const String CONFIG_URI = '/mita/public/config-app';
   static const String LOGIN_URI = '/oauth/token';
   static const String SIGN_UP = '/mita/public/sign';
