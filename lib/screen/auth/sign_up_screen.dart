@@ -7,8 +7,8 @@ import '../../helper/route_helper.dart';
 import '../../utils/dimensions.dart';
 import '../../utils/images.dart';
 import '../../utils/styles.dart';
+import '../../view/base/custom_text_field.dart';
 import '../../view/custom_button.dart';
-import '../base/custom_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

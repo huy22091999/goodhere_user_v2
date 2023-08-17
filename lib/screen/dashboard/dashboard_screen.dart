@@ -9,6 +9,7 @@ import '../../utils/dimensions.dart';
 import '../../view/base/cart_widget.dart';
 import '../favourite/favourite_screen.dart';
 import '../home/home_screen.dart';
+import '../menu/menu_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final int? pageIndex;
@@ -130,8 +131,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         iconData: Icons.menu,
                         isSelected: _pageIndex == 4,
                         onTap: () {
-                          Get.bottomSheet(Text("data"),
-                              // MenuScreen(),
+                          Get.bottomSheet(
+                              MenuScreen(),
                               backgroundColor: Colors.transparent,
                               isScrollControlled: true);
                         }),
