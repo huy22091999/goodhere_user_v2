@@ -17,7 +17,7 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
   final List<MenuModel> _menuList = [
     MenuModel(
-      icon: '',
+      icon: Images.about_us,
       title: 'profile'.tr,
       route: RouteHelper.getSignInRoute()),
     MenuModel(
@@ -85,7 +85,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   crossAxisSpacing: Dimensions.PADDING_SIZE_EXTRA_SMALL,
                   mainAxisSpacing: Dimensions.PADDING_SIZE_EXTRA_SMALL,
               ),
-                itemBuilder: (context,index) => MenuButton(model: _menuList[index],),
+                itemBuilder: (context,index) => MenuButton(model: _menuList[index],isWallet: index == 3,),
             ),
           ),
         ],

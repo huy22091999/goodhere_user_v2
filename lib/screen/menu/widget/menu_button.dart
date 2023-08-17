@@ -9,7 +9,8 @@ import '../../../view/base/custom_image.dart';
 
 class MenuButton extends StatelessWidget {
   final MenuModel model;
-  const MenuButton({super.key, required this.model});
+  final bool? isWallet;
+  const MenuButton({super.key, required this.model, this.isWallet});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,15 @@ class MenuButton extends StatelessWidget {
           const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_SMALL),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
-            color: Colors.green,
+            color: isWallet != null && isWallet! ? Colors.blue : Colors.green,
           ),
-          child: Image.asset(model.icon!,
-              width: 34, height: 34, color: Colors.white),
+          child: isWallet != null && isWallet!
+              ? Image.asset(model.icon!, width: 34)
+              : Image.asset(
+            model.icon!,
+            width: 34,
+            color: Colors.white,
+          ),
         ),
         const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
         Text(model.title!,
