@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goodhere_user_v2/screen/dashboard/widget/bottom_nav_item.dart';
+import 'package:goodhere_user_v2/screen/order/order_screen.dart';
 
 import '../../helper/responsive_helper.dart';
 import '../../utils/dimensions.dart';
@@ -41,7 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       HomeScreent(),
       FavouriteScreen(),
       Text("data"),
-      Text("data"),
+      OrderScreen(),
       // CartScreen(fromNav: true),
       // OrderScreen(),
       Container(),
