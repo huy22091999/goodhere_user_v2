@@ -20,6 +20,7 @@ class AppConstants {
   static const String SIGN_UP = '/mita/public/sign';
   static const String LOG_OUT = '/oauth/logout';
   static const String GET_USER = '/api/users/getCurrentUser';
+  static const String CHECK_TOKEN = '/oauth/check_token';
   static const String GET_ASSET_INFO = '/api/asset';
   static const String GET_DEPARTMENT = '/api/assetDepartment/org/searchByPage';
   static const String GET_ITEM_DEPARTMENT = '/api/v2/assets/asset-class/1';

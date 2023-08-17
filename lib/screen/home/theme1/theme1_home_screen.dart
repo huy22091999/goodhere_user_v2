@@ -6,6 +6,7 @@ import '../../../helper/responsive_helper.dart';
 import '../../../utils/dimensions.dart';
 import '../../../utils/images.dart';
 import '../../../utils/styles.dart';
+import '../../../view/base/paginated_list_view.dart';
 import '../widget/module_view.dart';
 
 class Theme1HomeScreen extends StatelessWidget {
@@ -35,39 +36,32 @@ class Theme1HomeScreen extends StatelessWidget {
             height: 50,
             color: Theme.of(context).backgroundColor,
             child: Row(children: [
-              InkWell(
-                onTap: () => {},
+              !showMobileModule ?
+               InkWell(
+                onTap: () => {Get.find<SplashController>().setModule(-1)},
                 child: Image.asset(Images.module_icon, height: 22, width: 22),
-              ),
-              SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+              ) :SizedBox(),
+              SizedBox(width: showMobileModule ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0 ),
               Expanded(
                   child: InkWell(
-                onTap: () =>
-                    Get.toNamed("RouteHelper.getAccessLocationRoute('home')"),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: Dimensions.PADDING_SIZE_SMALL,
-                    horizontal: ResponsiveHelper.isDesktop(context)
-                        ? Dimensions.PADDING_SIZE_SMALL
-                        : 0,
-                  ),
-                  child: GetBuilder<SplashController>(
-                      builder: (locationController) {
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          // locationController.getUserAddress()?.addressType ==
-                          //         'home'
-                          //     ?
+                    onTap: () =>
+                        Get.toNamed(
+                            "RouteHelper.getAccessLocationRoute('home')"),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: Dimensions.PADDING_SIZE_SMALL,
+                        horizontal: ResponsiveHelper.isDesktop(context)
+                            ? Dimensions.PADDING_SIZE_SMALL
+                            : 0,
+                      ),
+                      child: GetBuilder<SplashController>(
+                          builder: (locationController) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
                           Icons.home_filled
-                          // : locationController
-                          //             .getUserAddress()!
-                          //             .addressType ==
-                          //         'office'
-                          //     ? Icons.work
-                          //     : Icons.location_on
                           ,
                           size: 20,
                           color: Theme.of(context).textTheme.bodyText1!.color,
@@ -117,16 +111,16 @@ class Theme1HomeScreen extends StatelessWidget {
                     // : SizedBox()
                     ,
                   ]);
-                }),
+                    }),
                 onTap: () => Get.toNamed("RouteHelper.getNotificationRoute()"),
               ),
             ]),
-          )),
-          actions: [SizedBox()],
+              )),
+          actions: const [SizedBox()],
         ),
 
         // Search Button
-        !showMobileModule
+        showMobileModule
             ? SliverPersistentHeader(
                 pinned: true,
                 delegate: SliverDelegate(
@@ -180,67 +174,67 @@ class Theme1HomeScreen extends StatelessWidget {
               child: SizedBox(
                   width: Dimensions.WEB_MAX_WIDTH,
                   child:
-                      ModuleView(splashController: Get.find<SplashController>())
-                  // Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       // BannerView1(isFeatured: false),
-                  //       // CategoryView1(),
-                  //       // ItemCampaignView1(),
-                  //       // BestReviewedItemView(),
-                  //       // PopularStoreView1(isPopular: true, isFeatured: false),
-                  //       // PopularItemView1(isPopular: true),
-                  //       // PopularStoreView1(isPopular: false, isFeatured: false),
-                  //       Padding(
-                  //         padding: EdgeInsets.fromLTRB(10, 15, 0, 5),
-                  //         child: Row(children: [
-                  //           Expanded(
-                  //               child: Text(
-                  //             'all_stores'.tr,
-                  //             style: robotoMedium.copyWith(
-                  //                 fontSize: Dimensions.fontSizeLarge),
-                  //           )),
-                  //           // FilterVie w(),
-                  //         ]),
-                  //       ),
-                  //       GetBuilder<SplashController>(
-                  //           builder: (storeController) {
-                  //         return PaginatedListView(
-                  //             scrollController: scrollController,
-                  //             // totalSize:
-                  //             // storeController.storeModel != null
-                  //             //     ? storeController.storeModel!.totalSize
-                  //             //     : null,
-                  //             // offset: storeController.storeModel != null
-                  //             //     ? storeController.storeModel!.offset
-                  //             //     : null,
-                  //             // onPaginate: (int offset) async =>
-                  //             //     await storeController.getStoreList(
-                  //             //         offset, false),
-                  //             itemView: Text("data")
-                  //
-                  //             // ItemsView(
-                  //             //   isStore: true,
-                  //             //   items: null,
-                  //             //   showTheme1Store: true,
-                  //             //   stores: storeController.storeModel != null
-                  //             //       ? storeController.storeModel!.stores
-                  //             //       : null,
-                  //             //   padding: EdgeInsets.symmetric(
-                  //             //     horizontal: ResponsiveHelper.isDesktop(context)
-                  //             //         ? Dimensions.PADDING_SIZE_EXTRA_SMALL
-                  //             //         : Dimensions.PADDING_SIZE_SMALL,
-                  //             //     vertical: ResponsiveHelper.isDesktop(context)
-                  //             //     vertical: ResponsiveHelper.isDesktop(context)
-                  //             //         ? Dimensions.PADDING_SIZE_EXTRA_SMALL
-                  //             //         : 0,
-                  //             //   ),
-                  //             // ),
-                  //             );
-                  //       }),
-                  //     ])
-                  // ModuleView(splashController: splashController,),
-                  )),
+                  !showMobileModule
+                      ? ModuleView(
+                      splashController: Get.find<SplashController>())
+                      : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // BannerView1(isFeatured: false),
+                        // CategoryView1(),
+                        // ItemCampaignView1(),
+                        // BestReviewedItemView(),
+                        // PopularStoreView1(isPopular: true, isFeatured: false),
+                        // PopularItemView1(isPopular: true),
+                        // PopularStoreView1(isPopular: false, isFeatured: false),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(10, 15, 0, 5),
+                          child: Row(children: [
+                            Expanded(
+                                child: Text(
+                                  'all_stores'.tr,
+                                  style: robotoMedium.copyWith(
+                                      fontSize: Dimensions.fontSizeLarge),
+                                )),
+                            // FilterVie w(),
+                          ]),
+                        ),
+                        GetBuilder<SplashController>(
+                            builder: (storeController) {
+                              return PaginatedListView(
+                                  scrollController: scrollController,
+                                  // totalSize:
+                                  // storeController.storeModel != null
+                                  //     ? storeController.storeModel!.totalSize
+                                  //     : null,
+                                  // offset: storeController.storeModel != null
+                                  //     ? storeController.storeModel!.offset
+                                  //     : null,
+                                  // onPaginate: (int offset) async =>
+                                  //     await storeController.getStoreList(
+                                  //         offset, false),
+                                  itemView: Text("data")
+
+                                // ItemsView(
+                                //   isStore: true,
+                                //   items: null,
+                                //   showTheme1Store: true,
+                                //   stores: storeController.storeModel != null
+                                //       ? storeController.storeModel!.stores
+                                //       : null,
+                                //   padding: EdgeInsets.symmetric(
+                                //     horizontal: ResponsiveHelper.isDesktop(context)
+                                //         ? Dimensions.PADDING_SIZE_EXTRA_SMALL
+                                //         : Dimensions.PADDING_SIZE_SMALL,
+                                //     vertical: ResponsiveHelper.isDesktop(context)
+                                //     vertical: ResponsiveHelper.isDesktop(context)
+                                //         ? Dimensions.PADDING_SIZE_EXTRA_SMALL
+                                //         : 0,
+                                //   ),
+                                // ),
+                              );
+                            }),
+                      ]))),
         ),
       ],
     );

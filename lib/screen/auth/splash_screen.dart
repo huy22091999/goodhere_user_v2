@@ -78,13 +78,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _route() {
-    Get.find<AuthController>().getUser().then((value) => {
-      if (value == 200)
-        {
-          Get.offNamed(RouteHelper.main)
-        }
-      else
-        {Get.offNamed(RouteHelper.signIn)}
-    });
+    Get.find<AuthController>().checkToken().then((value) => {
+          if (value == 200)
+            {Get.offNamed(RouteHelper.main)}
+          else
+            {Get.offNamed(RouteHelper.signIn)}
+        });
   }
 }

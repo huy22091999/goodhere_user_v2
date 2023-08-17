@@ -57,16 +57,17 @@ class ModuleView extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(
                                     Dimensions.RADIUS_SMALL),
                                 child: CustomImage(
-                                  image: '${splashController?.moduleList[index].icon}',
+                                  image:
+                                      '${splashController?.moduleList[index].icon}',
                                   height: 50,
                                   width: 50,
                                 ),
                               ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                              const SizedBox(
+                                  height: Dimensions.PADDING_SIZE_SMALL),
                               Center(
                                   child: Text(
-                                splashController!
-                                    .moduleList[index].moduleName!,
+                                splashController!.moduleList[index].moduleName!,
                                 textAlign: TextAlign.center,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -226,7 +227,7 @@ class ModuleShimmer extends StatelessWidget {
 class AddressShimmer extends StatelessWidget {
   final bool isEnabled;
 
-  AddressShimmer({required this.isEnabled});
+  AddressShimmer({super.key, required this.isEnabled});
 
   @override
   Widget build(BuildContext context) {

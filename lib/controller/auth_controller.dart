@@ -56,6 +56,11 @@ class AuthController extends GetxController implements GetxService {
     }
     return response.statusCode!;
   }
+
+  Future<int> checkToken() async {
+    Response response = await repo.checkToken();
+    return response.statusCode!;
+  }
   void clearData(){
     _loading = false;
     _user = User();

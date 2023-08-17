@@ -41,7 +41,11 @@ class SplashController extends GetxController implements GetxService {
   String get version => _version;
 
   setModule(int index) {
-    _currentModule = moduleList[index];
+    if (index < 0) {
+      _currentModule = null;
+    } else {
+      _currentModule = moduleList[index];
+    }
     update();
   }
 

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/controller/splash_controller.dart';
 import 'package:goodhere_user_v2/screen/home/theme1/theme1_home_screen.dart';
-import 'package:lottie/lottie.dart';
-import '../../controller/auth_controller.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../utils/color_resources.dart';
+import '../../controller/auth_controller.dart';
 import '../../view/base/menu_drawer.dart';
-import 'item_notification.dart';
 
 class HomeScreent extends StatefulWidget {
   const HomeScreent({Key? key}) : super(key: key);
@@ -29,29 +24,33 @@ class _HomeScreentState extends State<HomeScreent> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        key: _scaffoldKey,
-        endDrawer: MenuDrawer(),
-        body: SafeArea(
-          child: RefreshIndicator(
-            onRefresh: () async {
-            },
-            child:  Theme1HomeScreen(
-              scrollController: ScrollController(),
-              showMobileModule: true,
-            )
-              //   : CustomScrollView(
-              // controller: _scrollController,
-              // physics: AlwaysScrollableScrollPhysics(),
-              // slivers: [
-              //   // App Bar
-              //   SliverAppBar(
-              //     floating: true,
-              //     elevation: 0,
-              //     automaticallyImplyLeading: false,
-              //     backgroundColor:
-              //     ResponsiveHelper.isDesktop(context)
-              //         ? Colors.transparent
+      key: _scaffoldKey,
+      endDrawer: MenuDrawer(),
+      body: SafeArea(
+        child: RefreshIndicator(
+            onRefresh: () async {},
+            child: GetBuilder<SplashController>(builder: (controller) {
+              bool isShowMobileModule =
+                  Get.find<SplashController>().currentModule != null;
+              return Theme1HomeScreen(
+                scrollController: ScrollController(),
+                showMobileModule: isShowMobileModule,
+              );
+            })
+            //   : CustomScrollView(
+            // controller: _scrollController,
+            // physics: AlwaysScrollableScrollPhysics(),
+            // slivers: [
+            //   // App Bar
+            //   SliverAppBar(
+            //     floating: true,
+            //     elevation: 0,
+            //     automaticallyImplyLeading: false,
+            //     backgroundColor:
+            //     ResponsiveHelper.isDesktop(context)
+            //         ? Colors.transparent
               //         : Theme.of(context).backgroundColor,
               //     title: Center(
               //         child: Container(

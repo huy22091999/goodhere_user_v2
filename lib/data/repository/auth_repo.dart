@@ -43,6 +43,13 @@ class AuthRepo {
   Future<Response> getCurrentUser() async{
     return await apiClient.getData(AppConstants.GET_USER);
   }
+  Future<Response> checkToken() async{
+    Map<String, String> _header = {
+      'Authorization': 'Basic Y29yZV9jbGllbnQ6c2VjcmV0',
+      'Content-Type' : 'application/json'
+    };
+    return await apiClient.postData('${AppConstants.CHECK_TOKEN}?token=${getUserToken()}', null,_header );
+  }
 
 
   Future<String> _saveDeviceToken() async {
@@ -64,14 +71,14 @@ class AuthRepo {
     apiClient.updateHeader("Bearer $token", null,
         sharedPreferences.getString(AppConstants.LANGUAGE_CODE) ?? "vi", 0);
     return await sharedPreferences.setString(
-        AppConstants.TOKEN, "Bearer $token");
+        AppConstants.TOKEN, "$token");
   }
   Future<bool> clearUserToken() async {
     return await sharedPreferences.remove(AppConstants.TOKEN);
   }
 
   String getUserToken() {
-    return sharedPreferences.getString(AppConstants.TOKEN) ?? "";
+    return sharedPreferences.getString(AppConstants.TOKEN)??"";
   }
 
   bool isLoggedIn() {

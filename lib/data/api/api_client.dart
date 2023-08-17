@@ -73,7 +73,10 @@ class ApiClient extends GetxService {
         print('====> API Call: $uri\nHeader: $_mainHeaders');
         print('====> API Body: $body');
       }
-      Http.Response _response = await Http.post(
+      Http.Response _response = body==null ? await Http.post(
+        Uri.parse(appBaseUrl + uri),
+        headers: headers ?? _mainHeaders,
+      ).timeout(Duration(seconds: timeoutInSeconds)):  await Http.post(
         Uri.parse(appBaseUrl + uri),
         body: jsonEncode(body),
         headers: headers ?? _mainHeaders,
@@ -133,7 +136,7 @@ class ApiClient extends GetxService {
   }
 
   Future<Response> putData(String uri, dynamic body,
-      {required Map<String, String> headers}) async {
+      {required Map<String, String>? headers}) async {
     try {
       if (Foundation.kDebugMode) {
         print('====> API Call: $uri\nHeader: $_mainHeaders');
