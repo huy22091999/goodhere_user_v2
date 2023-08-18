@@ -61,17 +61,16 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
     int addOnQty = 1;
     String total = '60,000 đ';
     return Container(
-      width: 550,
       margin: EdgeInsets.only(top: GetPlatform.isWeb ? 0 : 30),
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
           left: Dimensions.PADDING_SIZE_DEFAULT,
           bottom: Dimensions.PADDING_SIZE_DEFAULT),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: ResponsiveHelper.isMobile(context)
-            ? BorderRadius.vertical(
+            ? const BorderRadius.vertical(
                 top: Radius.circular(Dimensions.RADIUS_EXTRA_LARGE))
-            : BorderRadius.all(Radius.circular(Dimensions.RADIUS_EXTRA_LARGE)),
+            : const BorderRadius.all(Radius.circular(Dimensions.RADIUS_EXTRA_LARGE)),
       ),
       child: GetBuilder<ProductController>(builder: (productController) {
         // int _startingPrice;
@@ -178,7 +177,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
               children: [
                 InkWell(
                     onTap: () => Get.back(),
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.only(
                           right: Dimensions.PADDING_SIZE_EXTRA_SMALL,
                           top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
@@ -234,7 +233,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                       fromTop: 20),
                                 ]),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Expanded(
                                 child: Column(
                                     crossAxisAlignment:
@@ -261,7 +260,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                         },
                                         child: Padding(
                                           padding:
-                                              EdgeInsets.fromLTRB(0, 5, 5, 5),
+                                              const EdgeInsets.fromLTRB(0, 5, 5, 5),
                                           child: Text(
                                             storeName,
                                             style: robotoRegular.copyWith(
@@ -288,7 +287,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                                   decoration: TextDecoration
                                                       .lineThrough),
                                             )
-                                          : SizedBox(),
+                                          : const SizedBox(),
                                     ]),
                               ),
                               Column(
@@ -297,7 +296,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                   children: [
                                    true
                                         ? Container(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                                 vertical: Dimensions
                                                     .PADDING_SIZE_EXTRA_SMALL,
                                                 horizontal: Dimensions
@@ -316,11 +315,11 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                                   color: Colors.white),
                                             ),
                                           )
-                                        : SizedBox(),
-                                    SizedBox(height: 50),
+                                        : const SizedBox(),
+                                    const SizedBox(height: 50),
 
                                     false
-                                        ? SizedBox(height: 25)
+                                        ? const SizedBox(height: 25)
                                         : GetBuilder<ProductController>(
                                             builder: (wishList) {
                                             return InkWell(
@@ -342,7 +341,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                   ]),
                             ]),
 
-                        SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+                        const SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                         (widget.item!.description != null &&
                                 widget.item!.description!.isNotEmpty)
@@ -350,22 +349,22 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text('description'.tr, style: robotoMedium),
-                                  SizedBox(
+                                  const SizedBox(
                                       height:
                                           Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                   Text(widget.item!.description!,
                                       style: robotoRegular),
-                                  SizedBox(
+                                  const SizedBox(
                                       height: Dimensions.PADDING_SIZE_LARGE),
                                 ],
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
 
                         // Variation
                         ListView.builder(
                           shrinkWrap: true,
                           itemCount: choiceOptions.length,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             return Column(
@@ -374,7 +373,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                   Text(
                                       choiceOptions[index],
                                       style: robotoMedium),
-                                  SizedBox(
+                                  const SizedBox(
                                       height:
                                           Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                   GridView.builder(
@@ -389,7 +388,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                       childAspectRatio: (1 / 0.25),
                                     ),
                                     shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     padding: EdgeInsets.zero,
                                     itemCount: optionsDetail.length,
                                     itemBuilder: (context, i) {
@@ -399,7 +398,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                         },
                                         child: Container(
                                           alignment: Alignment.center,
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: Dimensions
                                                   .PADDING_SIZE_EXTRA_SMALL),
                                           decoration: BoxDecoration(
@@ -449,7 +448,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                         // Quantity
                         Row(children: [
                           Text('quantity'.tr, style: robotoMedium),
-                          Expanded(child: SizedBox()),
+                          const Expanded(child: SizedBox()),
                           Row(children: [
                             QuantityButton(
                               onTap: () {
@@ -467,7 +466,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                             ),
                           ]),
                         ]),
-                        SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+                        const SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                         // Addons
                         addOns.isNotEmpty
@@ -475,19 +474,19 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text('addons'.tr, style: robotoMedium),
-                                  SizedBox(
+                                  const SizedBox(
                                       height:
                                           Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                   GridView.builder(
                                     gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 4,
                                       crossAxisSpacing: 20,
                                       mainAxisSpacing: 10,
                                       childAspectRatio: (1 / 1.1),
                                     ),
                                     shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     itemCount: addOns.length,
                                     padding: EdgeInsets.zero,
                                     itemBuilder: (context, index) {
@@ -548,7 +547,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                                             .fontSizeSmall,
                                                       ),
                                                     ),
-                                                    SizedBox(height: 5),
+                                                    const SizedBox(height: 5),
                                                     Text(
                                                      true
                                                           ? '${addOns[index]['price']}'
@@ -586,48 +585,48 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                                               onTap: () {
                                                                 print('reduce onclick addon quantity');
                                                               },
-                                                              child: Center(child: Icon(Icons.remove, size: 15)),
+                                                              child: const Center(child: Icon(Icons.remove, size: 15)),
                                                             ),
                                                           ),
                                                           Text('$addOnQty',style: robotoMedium.copyWith(fontSize:Dimensions.fontSizeSmall)),
                                                           Expanded(
                                                             child: InkWell(
                                                               onTap: () => print('Incremace quantity addons'),
-                                                              child: Center(child: Icon(Icons.add, size: 15)),
+                                                              child: const Center(child: Icon(Icons.add, size: 15)),
                                                             ),
                                                           ),
                                                         ]),
                                                   )
-                                                : SizedBox(),
+                                                : const SizedBox(),
                                           ]),
                                         ),
                                       );
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                       height:
                                           Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                 ],
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
 
                         Row(children: [
                           Text('${'total_amount'.tr}:', style: robotoMedium),
-                          SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                          const SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                           Text(total,style: robotoBold.copyWith(color: Theme.of(context).primaryColor)),
                         ]),
-                        SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+                        const SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                         //Add to cart Button
 
                         // _isAvailable
                         true
-                            ? SizedBox()
+                            ? const SizedBox()
                             : Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.all(
+                                padding: const EdgeInsets.all(
                                     Dimensions.PADDING_SIZE_SMALL),
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     bottom: Dimensions.PADDING_SIZE_SMALL),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -652,11 +651,11 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
 
                         //(!widget.item!.scheduleOrder! && !_isAvailable)
                     false
-                            ? SizedBox()
+                            ? const SizedBox()
                             : Row(children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(50, 50),
+                                    minimumSize: const Size(50, 50),
                                     primary: Theme.of(context).cardColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
@@ -681,7 +680,7 @@ class _ItemBottomSheetState extends State<ItemBottomSheet> {
                                       height: 30,
                                       width: 30),
                                 ),
-                                SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                                const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
                                 Expanded(
                                   child: GetBuilder<ProductController>(
                                     builder: (itemController) => CustomButton(

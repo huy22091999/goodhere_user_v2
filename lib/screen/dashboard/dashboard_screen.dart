@@ -12,7 +12,6 @@ import '../../view/base/cart_widget.dart';
 import '../favourite/favourite_screen.dart';
 import '../home/home_screen.dart';
 import '../menu/menu_screen.dart';
-
 class DashboardScreen extends StatefulWidget {
   final int? pageIndex;
 
@@ -34,22 +33,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     super.initState();
-
     _pageIndex = widget.pageIndex!;
 
     _pageController = PageController(initialPage: widget.pageIndex!);
 
     _screens = [
-      HomeScreent(),
+      const HomeScreent(),
       FavouriteScreen(),
-      Text("data"),
+      const Text("data"),
       OrderScreen(),
       // CartScreen(fromNav: true),
       // OrderScreen(),
       Container(),
     ];
 
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {});
     });
     /*if(GetPlatform.isMobile) {
@@ -74,14 +72,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
             } else {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text('back_press_again_to_exit'.tr,
-                    style: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white)),
                 behavior: SnackBarBehavior.floating,
                 backgroundColor: Colors.green,
-                duration: Duration(seconds: 2),
-                margin: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                duration: const Duration(seconds: 2),
+                margin: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
               ));
               _canExit = true;
-              Timer(Duration(seconds: 2), () {
+              Timer(const Duration(seconds: 2), () {
                 _canExit = false;
               });
               return false;
@@ -107,14 +105,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: ResponsiveHelper.isDesktop(context)
-            ? SizedBox()
+            ? const SizedBox()
             : BottomAppBar(
                 elevation: 5,
                 notchMargin: 5,
                 clipBehavior: Clip.antiAlias,
-                shape: CircularNotchedRectangle(),
+                shape: const CircularNotchedRectangle(),
                 child: Padding(
-                  padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                  padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
                   child: Row(children: [
                     BottomNavItem(
                         iconData: Icons.home,
@@ -124,7 +122,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         iconData: Icons.favorite,
                         isSelected: _pageIndex == 1,
                         onTap: () => _setPage(1)),
-                    Expanded(child: SizedBox()),
+                    const Expanded(child: SizedBox()),
                     BottomNavItem(
                         iconData: Icons.shopping_bag,
                         isSelected: _pageIndex == 3,
@@ -134,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         isSelected: _pageIndex == 4,
                         onTap: () {
                           Get.bottomSheet(
-                              MenuScreen(),
+                              const MenuScreen(),
                               backgroundColor: Colors.transparent,
                               isScrollControlled: true);
                         }),
@@ -144,7 +142,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         body: PageView.builder(
           controller: _pageController,
           itemCount: _screens!.length,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return _screens![index];
           },

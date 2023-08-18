@@ -21,7 +21,7 @@ class Theme1HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       controller: scrollController,
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
         // App Bar
         SliverAppBar(
@@ -37,11 +37,11 @@ class Theme1HomeScreen extends StatelessWidget {
                 height: 50,
                 color: Theme.of(context).backgroundColor,
                 child: Row(children: [
-                  !showMobileModule ?
+                  showMobileModule ?
                   InkWell(
                     onTap: () => {Get.find<SplashController>().setModule(-1)},
                     child: Image.asset(Images.module_icon, height: 22, width: 22),
-                  ) :SizedBox(),
+                  ) :const SizedBox(),
                   SizedBox(width: showMobileModule ? Dimensions.PADDING_SIZE_EXTRA_SMALL : 0 ),
                   Expanded(
                       child: InkWell(
@@ -67,7 +67,7 @@ class Theme1HomeScreen extends StatelessWidget {
                                       size: 20,
                                       color: Theme.of(context).textTheme.bodyText1!.color,
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     // hiển thị vị trí
                                     Flexible(
                                       child: Text(
@@ -130,12 +130,12 @@ class Theme1HomeScreen extends StatelessWidget {
                   height: 50,
                   width: Dimensions.WEB_MAX_WIDTH,
                   color: Theme.of(context).backgroundColor,
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_SMALL),
                   child: InkWell(
                     onTap: () => Get.toNamed("RouteHelper.getSearchRoute()"),
                     child: Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                           horizontal: Dimensions.PADDING_SIZE_SMALL),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
@@ -148,13 +148,13 @@ class Theme1HomeScreen extends StatelessWidget {
                         ],
                       ),
                       child: Row(children: [
-                        SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                        const SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         Icon(
                           Icons.search,
                           size: 25,
                           color: Theme.of(context).hintColor,
                         ),
-                        SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                        const SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         Expanded(
                             child: Text(
                           'search_item_or_store'.tr,
@@ -168,7 +168,7 @@ class Theme1HomeScreen extends StatelessWidget {
                   ),
                 ))),
               )
-            : SliverToBoxAdapter(),
+            : const SliverToBoxAdapter(),
 
         SliverToBoxAdapter(
           child: Center(
@@ -189,7 +189,7 @@ class Theme1HomeScreen extends StatelessWidget {
                         // PopularItemView1(isPopular: true),
                         // PopularStoreView1(isPopular: false, isFeatured: false),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(10, 15, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(10, 15, 0, 5),
                           child: Row(children: [
                             Expanded(
                                 child: Text(

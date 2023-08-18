@@ -38,7 +38,6 @@ class _OrderScreenState extends State<OrderScreen> with TickerProviderStateMixin
       body: _isLoggedIn ? GetBuilder<OrderController>(
         builder: (orderController) {
           return Column(children: [
-
             Center(
               child: Container(
                 width: Dimensions.WEB_MAX_WIDTH,

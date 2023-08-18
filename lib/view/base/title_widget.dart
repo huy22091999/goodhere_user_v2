@@ -20,7 +20,7 @@ class TitleWidget extends StatelessWidget {
           ? InkWell(
               onTap: onTap!,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(10, 5, 0, 5),
+                padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
                 child: Text(
                   'view_all'.tr,
                   style: robotoMedium.copyWith(
@@ -29,7 +29,7 @@ class TitleWidget extends StatelessWidget {
                 ),
               ),
             )
-          : SizedBox(),
+          : const SizedBox(),
     ]);
   }
 }

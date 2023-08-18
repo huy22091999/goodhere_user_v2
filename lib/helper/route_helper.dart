@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:goodhere_user_v2/screen/auth/sign_up_screen.dart';
 
+import '../screen/dashboard/dashboard_screen.dart';
 import '../screen/home/home_screen.dart';
 import '../screen/auth/sign_in_screen.dart';
 import '../screen/auth/splash_screen.dart';
@@ -53,7 +54,7 @@ class RouteHelper {
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: signIn, page: () => const SignInScreen()),
     GetPage(name: signUp, page: () => const SignUpScreen()),
-    GetPage(name: main, page: () => const HomeScreent()),
+    GetPage(name: main, page: () => DashboardScreen( pageIndex: 0)),
   ];
 
   static getRoute(Widget navigateTo) {

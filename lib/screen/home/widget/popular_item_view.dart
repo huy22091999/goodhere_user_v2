@@ -38,7 +38,7 @@ class PopularItemView extends StatelessWidget {
           : Column(
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(10, 15, 10, 10),
+            padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
             child: TitleWidget(
                 title: isPopular
                     ? 'popular_items_nearby'.tr
@@ -53,9 +53,9 @@ class PopularItemView extends StatelessWidget {
             child: itemList != null
                 ? ListView.builder(
               controller: ScrollController(),
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                   left: Dimensions.PADDING_SIZE_SMALL),
               itemCount:
               itemList.length > 10 ? 10 : itemList.length,
@@ -66,7 +66,7 @@ class PopularItemView extends StatelessWidget {
                 //     double.parse(_itemList[index].latitude),
                 //     double.parse(_itemList[index].longitude));
                 return Padding(
-                  padding: EdgeInsets.fromLTRB(
+                  padding: const EdgeInsets.fromLTRB(
                       2, 2, Dimensions.PADDING_SIZE_SMALL, 2),
                   child: InkWell(
                     onTap: () {
@@ -77,7 +77,7 @@ class PopularItemView extends StatelessWidget {
                     child: Container(
                       height: 90,
                       width: 250,
-                      padding: EdgeInsets.all(
+                      padding: const EdgeInsets.all(
                           Dimensions.PADDING_SIZE_EXTRA_SMALL),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
@@ -117,12 +117,12 @@ class PopularItemView extends StatelessWidget {
                                 discountType: 'VND',
                               ),
                               itemProductIsAvailable
-                                  ? SizedBox()
+                                  ? const SizedBox()
                                   : NotAvailableWidget(),
                             ]),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: Dimensions
                                         .PADDING_SIZE_EXTRA_SMALL),
                                 child: Column(
@@ -141,7 +141,7 @@ class PopularItemView extends StatelessWidget {
                                         overflow:
                                         TextOverflow.ellipsis,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                           height: Dimensions
                                               .PADDING_SIZE_EXTRA_SMALL),
                                       Text(
@@ -174,7 +174,7 @@ class PopularItemView extends StatelessWidget {
                                                       Dimensions
                                                           .fontSizeSmall),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                     width:
                                                     true
                                                         ?
@@ -198,10 +198,10 @@ class PopularItemView extends StatelessWidget {
                                                             .lineThrough,
                                                       ),
                                                     ))
-                                                    : SizedBox(),
+                                                    : const SizedBox(),
                                               ]),
                                         ),
-                                        Icon(Icons.add, size: 20),
+                                        const Icon(Icons.add, size: 20),
                                       ]),
                                     ]),
                               ),
@@ -229,17 +229,17 @@ class PopularItemShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
+      padding: const EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
       itemCount: 10,
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.fromLTRB(2, 2, Dimensions.PADDING_SIZE_SMALL, 2),
+          padding: const EdgeInsets.fromLTRB(2, 2, Dimensions.PADDING_SIZE_SMALL, 2),
           child: Container(
             height: 90,
             width: 250,
-            padding: EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
+            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(Dimensions.RADIUS_SMALL),
@@ -253,8 +253,8 @@ class PopularItemShimmer extends StatelessWidget {
               ],
             ),
             child: Shimmer(
-              duration: Duration(seconds: 1),
-              interval: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
+              interval: const Duration(seconds: 1),
               enabled: enabled,
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,7 +271,7 @@ class PopularItemShimmer extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -281,12 +281,12 @@ class PopularItemShimmer extends StatelessWidget {
                                   height: 15,
                                   width: 100,
                                   color: Colors.grey[300]),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Container(
                                   height: 10,
                                   width: 130,
                                   color: Colors.grey[300]),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               RatingBar(rating: 0, size: 12, ratingCount: 0),
                               Row(children: [
                                 Expanded(
@@ -298,7 +298,7 @@ class PopularItemShimmer extends StatelessWidget {
                                             height: 15,
                                             width: 50,
                                             color: Colors.grey[300]),
-                                        SizedBox(
+                                        const SizedBox(
                                             width: Dimensions
                                                 .PADDING_SIZE_EXTRA_SMALL),
                                         Container(
@@ -307,7 +307,7 @@ class PopularItemShimmer extends StatelessWidget {
                                             color: Colors.grey[300]),
                                       ]),
                                 ),
-                                Icon(Icons.add, size: 20),
+                                const Icon(Icons.add, size: 20),
                               ]),
                             ]),
                       ),

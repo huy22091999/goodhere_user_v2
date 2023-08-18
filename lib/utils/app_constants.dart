@@ -21,7 +21,7 @@ class AppConstants {
   static const String LOGIN_URI = '/oauth/token';
   static const String SIGN_UP = '/mita/public/sign';
   static const String LOG_OUT = '/oauth/logout';
-  static const String GET_USER = '/api/users/getCurrentUser';
+  static const String GET_USER = '/api/v1/api/v1/users/current';
   static const String CHECK_TOKEN = '/oauth/check_token';
   static const String GET_ASSET_INFO = '/api/asset';
   static const String GET_DEPARTMENT = '/api/assetDepartment/org/searchByPage';
