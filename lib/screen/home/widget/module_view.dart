@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
+import '../../../controller/product_controller.dart';
 import '../../../controller/splash_controller.dart';
 import '../../../helper/responsive_helper.dart';
 import '../../../utils/dimensions.dart';
@@ -35,8 +36,9 @@ class ModuleView extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () => {
-                        splashController?.setModule(index)
+                      onTap: (){
+                        splashController?.setModule(index);
+                        Get.find<ProductController>().getProducts(pageSize: 5, pageIndex: 1);
                       },
                       child: Container(
                         decoration: BoxDecoration(

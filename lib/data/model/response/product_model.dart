@@ -2,10 +2,8 @@ class ProductModel {
   String? id;
   int? deleted;
   String? orgId;
-  List<int>? createDate;
   String? createdBy;
   String? modifiedBy;
-  List<int>? modifyDate;
   String? name;
   String? code;
   String? description;
@@ -21,10 +19,8 @@ class ProductModel {
       {this.id,
         this.deleted,
         this.orgId,
-        this.createDate,
         this.createdBy,
         this.modifiedBy,
-        this.modifyDate,
         this.name,
         this.code,
         this.description,
@@ -40,10 +36,8 @@ class ProductModel {
     id = json['id'];
     deleted = json['deleted'];
     orgId = json['orgId'];
-    createDate = json['createDate'].cast<int>();
     createdBy = json['createdBy'];
     modifiedBy = json['modifiedBy'];
-    modifyDate = json['modifyDate'].cast<int>();
     name = json['name'];
     code = json['code'];
     description = json['description'];
@@ -66,10 +60,8 @@ class ProductModel {
     data['id'] = this.id;
     data['deleted'] = this.deleted;
     data['orgId'] = this.orgId;
-    data['createDate'] = this.createDate;
     data['createdBy'] = this.createdBy;
     data['modifiedBy'] = this.modifiedBy;
-    data['modifyDate'] = this.modifyDate;
     data['name'] = this.name;
     data['code'] = this.code;
     data['description'] = this.description;
