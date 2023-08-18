@@ -9,6 +9,23 @@ class ProductController extends GetxController implements GetxService {
   bool _isLoading = false;
   late List<ProductModel> _productList = [];
   List<ProductModel> get productList => _productList;
+
+  List<ProductModel> cart = [];
+
+  Map<int,int> variationIndex = {
+    0 : 0,
+    1 : 0
+  };
+  Map<int,int> addOnQuantity = {
+    0 : 1,
+    1 : 1,
+    2 : 1,
+    3 : 1,
+    4 : 1,
+    5 : 1,
+  };
+  int quantity = 1,indexAddon = 0;
+
   Future<bool> getProducts({required int pageSize, required int pageIndex}) async {
     _isLoading = true;
     update();
@@ -27,4 +44,57 @@ class ProductController extends GetxController implements GetxService {
     return(response.isOk);
   }
 
+  void setAddonsIndex(int index){
+    indexAddon = index;
+    update();
+  }
+
+  void setCartVariationIndex(int options, int detail){
+    variationIndex[options] = detail;
+    update();
+  }
+
+  void incrementAddOns(int index){
+    int value = addOnQuantity[index]!;
+    addOnQuantity[index] = value + 1;
+    update();
+  }
+
+  void decreaseAddOns(int index){
+    if(addOnQuantity[index]! > 1) {
+      addOnQuantity[index] = addOnQuantity[index]! - 1;
+    }
+    update();
+  }
+
+  void increment(){
+    quantity += 1;
+    update();
+  }
+
+  void decrease(){
+    if(quantity > 1) {
+      quantity -= 1;
+    }
+    update();
+  }
+  void addToCart(ProductModel model){
+    cart.add(model);
+    update();
+  }
+  void clearData(){
+    variationIndex = {
+      0 : 0,
+      1 : 0
+    };
+    quantity = 1;
+    addOnQuantity = {
+      0 : 1,
+      1 : 1,
+      2 : 1,
+      3 : 1,
+      4 : 1,
+      5 : 1,
+    };
+  }
 }

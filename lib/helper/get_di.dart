@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -10,7 +9,6 @@ import 'package:goodhere_user_v2/data/repository/order_repo.dart';
 import 'package:goodhere_user_v2/data/repository/product_repo.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../controller/auth_controller.dart';
 import '../controller/localization_controller.dart';
 import '../controller/splash_controller.dart';
@@ -49,7 +47,6 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => SplashController(repo: Get.find()));
   Get.lazyPut(() => AuthController(repo: Get.find()));
   Get.lazyPut(() => OrderController(orderRepo: Get.find()));
-
   Get.lazyPut(() => ProductController(productRepo: Get.find()));
 
   if (await Permission.location.isGranted) {
