@@ -36,7 +36,7 @@ class Theme1HomeScreen extends StatelessWidget {
             height: 50,
             color: Theme.of(context).backgroundColor,
             child: Row(children: [
-              !showMobileModule ?
+              showMobileModule ?
                InkWell(
                 onTap: () => {Get.find<SplashController>().setModule(-1)},
                 child: Image.asset(Images.module_icon, height: 22, width: 22),
@@ -138,7 +138,7 @@ class Theme1HomeScreen extends StatelessWidget {
                           horizontal: Dimensions.PADDING_SIZE_SMALL),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[Get.isDarkMode ? 800 : 200]!,
@@ -147,21 +147,26 @@ class Theme1HomeScreen extends StatelessWidget {
                         ],
                       ),
                       child: Row(children: [
-                        SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         Icon(
                           Icons.search,
                           size: 25,
-                          color: Theme.of(context).hintColor,
+                          color: Theme.of(context)
+                              .primaryColor,
                         ),
-                        SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                        SizedBox(
+                            width: Dimensions
+                                .PADDING_SIZE_EXTRA_SMALL),
                         Expanded(
                             child: Text(
-                          'search_item_or_store'.tr,
-                          style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeSmall,
-                            color: Theme.of(context).hintColor,
-                          ),
-                        )),
+                              'search_item_or_store'.tr,
+                              style: robotoRegular
+                                  .copyWith(
+                                fontSize: Dimensions
+                                    .fontSizeSmall,
+                                color: Theme.of(context)
+                                    .hintColor,
+                              ),
+                            )),
                       ]),
                     ),
                   ),

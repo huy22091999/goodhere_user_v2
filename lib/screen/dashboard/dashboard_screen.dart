@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:goodhere_user_v2/screen/dashboard/widget/bottom_nav_item.dart';
 import 'package:goodhere_user_v2/screen/order/order_screen.dart';
 
+import '../../controller/splash_controller.dart';
 import '../../helper/responsive_helper.dart';
 import '../../utils/dimensions.dart';
 import '../../view/base/cart_widget.dart';
@@ -65,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return false;
         } else {
           if (!ResponsiveHelper.isDesktop(context)) {
-            // Get.find<SplashController>().setModule(null);
+            Get.find<SplashController>().setModule(-1);
             return false;
           } else {
             if (_canExit) {
