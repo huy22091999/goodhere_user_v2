@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:goodhere_user_v2/controller/product_controller.dart';
+import 'package:goodhere_user_v2/screen/cart.dart';
 import 'package:goodhere_user_v2/screen/dashboard/widget/bottom_nav_item.dart';
 import 'package:goodhere_user_v2/screen/order/order_screen.dart';
 
@@ -40,7 +42,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _screens = [
       const HomeScreent(),
       FavouriteScreen(),
-      const Text("data"),
+      CartScreen(),
       OrderScreen(),
       // CartScreen(fromNav: true),
       // OrderScreen(),
@@ -91,18 +93,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
         key: _scaffoldKey,
         floatingActionButton: ResponsiveHelper.isDesktop(context)
             ? null
-            : FloatingActionButton(
-                elevation: 5,
-                backgroundColor: _pageIndex == 2
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).cardColor,
-                onPressed: () => _setPage(2),
-                child: CartWidget(
-                    color: _pageIndex == 2
-                        ? Theme.of(context).cardColor
-                        : Theme.of(context).disabledColor,
-                    size: 30),
-              ),
+            : GetBuilder<ProductController>(builder: (productController) => Stack(
+          children: [
+            FloatingActionButton(
+              elevation: 5,
+              backgroundColor: _pageIndex == 2
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).cardColor,
+              onPressed: () => _setPage(2),
+              child: CartWidget(
+                  color: _pageIndex == 2
+                      ? Theme.of(context).cardColor
+                      : Theme.of(context).disabledColor,
+                  size: 30),
+            ),
+            Positioned(
+                right: 0,
+                top: 0,
+                child: Visibility(
+                  visible: productController.cart.isNotEmpty,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.red
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(productController.cart.length.toString(),style: const TextStyle(color: Colors.white),),
+                      )
+                  ),
+                )
+            )
+          ],
+        ),),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: ResponsiveHelper.isDesktop(context)
             ? const SizedBox()

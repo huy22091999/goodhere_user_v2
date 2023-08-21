@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +13,6 @@ import 'package:goodhere_user_v2/data/repository/product_repo.dart';
 import 'package:goodhere_user_v2/data/repository/search_repo.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../controller/auth_controller.dart';
 import '../controller/localization_controller.dart';
 import '../controller/location_controller.dart';

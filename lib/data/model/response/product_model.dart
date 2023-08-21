@@ -14,6 +14,9 @@ class ProductModel {
   int? price;
   int? quantity;
   List<ListImage>? listImage;
+  Map<int,int>? options;
+  int? indexAddOns;
+  int? quantityAddOns;
 
   ProductModel(
       {this.id,
