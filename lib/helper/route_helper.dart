@@ -6,6 +6,8 @@ import '../screen/dashboard/dashboard_screen.dart';
 import '../screen/home/home_screen.dart';
 import '../screen/auth/sign_in_screen.dart';
 import '../screen/auth/splash_screen.dart';
+import '../screen/location/access_location_screen.dart';
+import '../screen/search/search_screen.dart';
 
 class RouteHelper {
   static const String initial = '/';
@@ -49,12 +51,20 @@ class RouteHelper {
   static String getListInventory(String id) => '$listInventory?id=$id';
 
   static String getHtmlRoute(String page) => '$html?page=$page';
+  static String getAccessLocationRoute(String page) => '$accessLocation?page=$page';
+  static String getPickMapRoute(String page, bool canRoute) => '$pickMap?page=$page&route=${canRoute.toString()}';
+  static String getSearchRoute({String? queryText}) => '$search?query=${queryText ?? ''}';
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: signIn, page: () => const SignInScreen()),
     GetPage(name: signUp, page: () => const SignUpScreen()),
     GetPage(name: main, page: () => DashboardScreen( pageIndex: 0)),
+    GetPage(name: accessLocation, page: () => AccessLocationScreen(
+      fromSignUp: Get.parameters['page'] == signUp, fromHome: Get.parameters['page'] == 'home', route: "",
+    )),
+    GetPage(name: search, page: () => getRoute(SearchScreen(queryText: Get.parameters['query']!))),
+
   ];
 
   static getRoute(Widget navigateTo) {

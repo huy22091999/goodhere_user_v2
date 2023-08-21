@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+
 import '../data/api/api_checker.dart';
 import '../data/model/body/user.dart';
 import '../data/model/response/token_resposive.dart';
@@ -11,9 +12,11 @@ class AuthController extends GetxController implements GetxService {
   AuthController({required this.repo});
 
   bool _loading = false;
+  bool _isLogin = false;
   User _user = User();
 
   bool get loading => _loading;
+
   User get user => _user;
 
   Future<int> login(String username, String password) async {
@@ -24,6 +27,7 @@ class AuthController extends GetxController implements GetxService {
     if (response.statusCode == 200) {
       TokenResponsive tokeBody = TokenResponsive.fromJson(response.body);
       repo.saveUserToken(tokeBody.accessToken!);
+      _isLogin = true;
     }
     else {
       ApiChecker.checkApi(response);
@@ -37,6 +41,7 @@ class AuthController extends GetxController implements GetxService {
     Response response = await repo.logOut();
     if(response.statusCode == 200){
       repo.clearUserToken();
+      _isLogin = true;
     }
     else {
       ApiChecker.checkApi(response);
@@ -50,8 +55,7 @@ class AuthController extends GetxController implements GetxService {
     if(response.statusCode == 200){
       _user = User.fromJson(response.body);
       update();
-    }
-    else {
+    } else {
       ApiChecker.checkApi(response);
     }
     return response.statusCode!;
@@ -61,8 +65,13 @@ class AuthController extends GetxController implements GetxService {
     Response response = await repo.checkToken();
     return response.statusCode!;
   }
-  void clearData(){
+
+  void clearData() {
     _loading = false;
     _user = User();
+  }
+
+  isLoggedIn() {
+    return _isLogin;
   }
 }

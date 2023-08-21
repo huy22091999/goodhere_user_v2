@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../data/model/response/module_model.dart';
+import '../data/model/response/prediction_model.dart';
 import '../data/model/response/product_model.dart';
 import '../data/repository/splash_repo.dart';
 import '../helper/responsive_helper.dart';
-import '../helper/route_helper.dart';
 import '../view/base/item_bottom_sheet.dart';
 
 class SplashController extends GetxController implements GetxService {
@@ -75,14 +74,20 @@ class SplashController extends GetxController implements GetxService {
       ResponsiveHelper.isMobile(context)
           ?
       Get.bottomSheet(
-        ItemBottomSheet(item: item),
-        backgroundColor: Colors.transparent, isScrollControlled: true,
-      )
-          :
-      Get.dialog(Dialog(child: ItemBottomSheet(item: item)),);
-    }else {
+              ItemBottomSheet(item: item),
+              backgroundColor: Colors.transparent,
+              isScrollControlled: true,
+            )
+          : Get.dialog(
+              Dialog(child: ItemBottomSheet(item: item)),
+            );
+    } else {
       print('Show ItemDetails Screen');
       //Get.toNamed(RouteHelper.getItemDetailsRoute(item.id!, inStore), arguments: ItemDetailsScreen(item: item, inStorePage: inStore));
     }
+  }
+
+  Future<List<PredictionModel>> temp() async {
+    return Future(() => []);
   }
 }

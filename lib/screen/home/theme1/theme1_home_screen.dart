@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/splash_controller.dart';
 import '../../../helper/responsive_helper.dart';
+import '../../../helper/route_helper.dart';
 import '../../../utils/dimensions.dart';
 import '../../../utils/images.dart';
 import '../../../utils/styles.dart';
@@ -15,7 +16,7 @@ class Theme1HomeScreen extends StatelessWidget {
   final bool showMobileModule;
 
   const Theme1HomeScreen(
-      {required this.scrollController, required this.showMobileModule});
+      {super.key, required this.scrollController, required this.showMobileModule});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class Theme1HomeScreen extends StatelessWidget {
                       child: InkWell(
                         onTap: () =>
                             Get.toNamed(
-                                "RouteHelper.getAccessLocationRoute('home')"),
+                                RouteHelper.getAccessLocationRoute('home')),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                             vertical: Dimensions.PADDING_SIZE_SMALL,
@@ -133,13 +134,13 @@ class Theme1HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: Dimensions.PADDING_SIZE_SMALL),
                   child: InkWell(
-                    onTap: () => Get.toNamed("RouteHelper.getSearchRoute()"),
+                    onTap: () => Get.toNamed(RouteHelper.getSearchRoute()),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: Dimensions.PADDING_SIZE_SMALL),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey[Get.isDarkMode ? 800 : 200]!,
